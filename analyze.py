@@ -1,6 +1,6 @@
 import numpy
 import matplotlib.pyplot as plt
-from Simulate import backLegSensorValues
+from simulate import backLegSensorValues
 
 backLegSensorValues = numpy.load(backLegSensorValues.npy)
 
