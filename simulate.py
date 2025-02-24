@@ -8,6 +8,7 @@ import constants as c
 from simulation import SIMULATION
 
 simulation = SIMULATION()
+simulation.Run()
 
 # amplitude_frontleg = c.AMPLITUDE_FRONTLEG
 # frequency_frontleg = c.FREQUENCY_FRONTLEG
@@ -43,25 +44,6 @@ simulation = SIMULATION()
 
 # #exit()
 
-# for i in range (1000):
-#     p.stepSimulation()
-#     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("backLeg")
-#     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("frontLeg")
-
-#     pyrosim.Set_Motor_For_Joint(
-#         bodyIndex=robotID,
-#         jointName=b'torso_backLeg',
-#         controlMode=p.POSITION_CONTROL,
-#         targetPosition=motorControl_backleg[i],
-#         maxForce=5)
-#     pyrosim.Set_Motor_For_Joint(
-#         bodyIndex=robotID,
-#         jointName=b'torso_frontLeg',
-#         controlMode=p.POSITION_CONTROL,
-#         targetPosition=motorControl_frontleg[i],
-#         maxForce=5)
-
-#     time.sleep(1/60)
 
 
 # p.disconnect()
