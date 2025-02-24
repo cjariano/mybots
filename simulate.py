@@ -19,12 +19,6 @@ simulation.Run()
 # phaseOffset_backleg = c.PHASEOFFSET_BACKLEG
 
 
-# backLegSensorValues = np.zeros(1000)
-# frontLegSensorValues = np.zeros(1000)
-
-# motorControl_frontleg = np.zeros(1000)
-# motorControl_backleg = np.zeros(1000)
-
 # #targetAngles_frontleg = np.sin(np.linspace(-1. ,1. , 1000))
 # targetAngles_frontleg = np.linspace(0, 2 * np.pi, 1000)
 # targetAngles_frontleg = targetAngles_frontleg * (np.pi / 4)
@@ -46,6 +40,5 @@ simulation.Run()
 
 
 
-# p.disconnect()
 # np.save("data/back_leg_sensor_values.npy", backLegSensorValues)
 # np.save("data/front_leg_sensor_values.npy", frontLegSensorValues)

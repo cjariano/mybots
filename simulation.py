@@ -15,7 +15,6 @@ class SIMULATION:
         p.setGravity(0,0,-9.8, physicsClient)
         self.world = WORLD()
         self.robot = ROBOT()
-        pyrosim.Prepare_To_Simulate(self.robot.robotID)
 
     def __del__(self):
         p.disconnect()
@@ -24,8 +23,8 @@ class SIMULATION:
         for i in range (1000):
             print(i)
             p.stepSimulation()
-            # backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("backLeg")
-            # frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("frontLeg")
+            self.robot.Sense()
+            
             # pyrosim.Set_Motor_For_Joint(
             #     bodyIndex=robotID,
             #     jointName=b'torso_backLeg',
