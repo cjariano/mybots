@@ -20,22 +20,9 @@ class SIMULATION:
         p.disconnect()
 
     def Run(self):
-        for i in range (1000):
-            print(i)
+        for t in range (1000):
+            # print(t)
             p.stepSimulation()
-            self.robot.Sense()
-            
-            # pyrosim.Set_Motor_For_Joint(
-            #     bodyIndex=robotID,
-            #     jointName=b'torso_backLeg',
-            #     controlMode=p.POSITION_CONTROL,
-            #     targetPosition=motorControl_backleg[i],
-            #     maxForce=5)
-            # pyrosim.Set_Motor_For_Joint(
-            #     bodyIndex=robotID,
-            #     jointName=b'torso_frontLeg',
-            #     controlMode=p.POSITION_CONTROL,
-            #     targetPosition=motorControl_frontleg[i],
-            #     maxForce=5)
-
-            time.sleep(1/60)
+            self.robot.Sense(t)
+            self.robot.Act(t)
+            time.sleep(1/10)
