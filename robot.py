@@ -1,42 +1,52 @@
+import pybullet as p
+import time
+import pybullet_data
+import pyrosim.pyrosim as pyrosim
+import numpy as np
+import constants as c
 from sensor import SENSOR
 from motor import MOTOR
-import pybullet as p
-import pyrosim.pyrosim as pyrosim
-import constants as c
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 
-class ROBOT:
 
+class ROBOT:
     def __init__(self):
         self.robotID = p.loadURDF("body.urdf")
+        self.sensors = {}
+        self.motors = {}
         self.nn = NEURAL_NETWORK("brain.nndf")
+
         pyrosim.Prepare_To_Simulate(self.robotID)
+
         self.Prepare_To_Sense()
-        self.Prepare_To_Act()
+        self.Prepare_to_Act()
+
 
     def Prepare_To_Sense(self):
-        self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:
+            #print(linkName)
             self.sensors[linkName] = SENSOR(linkName)
+
+    def Prepare_to_Act(self):
+        for jointName in pyrosim.jointNamesToIndices:
+            self.motors[jointName] = MOTOR(jointName)
 
     def Sense(self, t):
         for sensor in self.sensors.values():
-            sensor.Get_Value(t) 
-
-    def Prepare_To_Act(self):
-        self.motors = {}
-        for jointName in pyrosim.jointNamesToIndices:
-            self.motors[jointName] = MOTOR(jointName)
+            sensor.Get_Value(t)
 
     def Act(self, t):
         for neuronName in self.nn.Get_Neuron_Names():
             if self.nn.Is_Motor_Neuron(neuronName):
-                jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
+                jointName = self.nn.Get_Motor_Neurons_Joint(neuronName).encode("utf-8")
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
-                print(neuronName, jointName, desiredAngle)
-        
-        # for motor in self.motors.values():
-        #     motor.Set_Value(t, self.robotID)
+                #print(f"robotID: ", self.robotID)
+                #exit()
+                #jointName = jointName.decode("utf-8")
+
+                self.motors[jointName].Set_Value(desiredAngle, self.robotID)
+        #for motor in self.motors.values():
+         #   motor.Set_Value(self, t)
 
     def Think(self):
         self.nn.Update()

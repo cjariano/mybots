@@ -15,13 +15,13 @@ class MOTOR:
         self.frequency = c.FREQUENCY_BACKLEG
         self.offset = c.PHASEOFFSET_BACKLEG
 
-        if self.jointName == "torse_frontLeg":
+        if self.jointName == "torso_frontLeg":
             self.frequency *= 0.5
 
         self.motorValues = self.amplitude * np.sin(self.frequency * np.linspace(0, 2*np.pi, 1000) + self.offset)
 
-    def Set_Value(self, t, robotID):
-        targetLocation = self.motorValues[t]
+    def Set_Value(self, desiredAngle, robotID):
+        targetLocation = float(desiredAngle) #self.motorValues[desiredAngle]
         pyrosim.Set_Motor_For_Joint(
                 bodyIndex=robotID,
                 jointName=self.jointName,
