@@ -82,7 +82,7 @@ class NEURON:
         
         self.Threshold()
         print(self.Get_Value())
-        exit()
+        #exit()
                 
 # -------------------------- Private methods -------------------------
 
