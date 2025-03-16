@@ -3,12 +3,7 @@ import numpy as np
 
 def Create_World():
     pyrosim.Start_SDF("world.sdf")
-    #pyrosim.Send_Cube(name=f"Box_1", pos=[2, 2, 0.5], size=[1, 1, 1])
-
     pyrosim.End()
-
-def Create_Robot():
-    pass
 
 def Generate_Body():
     pyrosim.Start_URDF("body.urdf")
