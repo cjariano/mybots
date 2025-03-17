@@ -8,4 +8,4 @@ AMPLITUDE_BACKLEG = np.pi/4
 FREQUENCY_BACKLEG = 4
 PHASEOFFSET_BACKLEG = 0
 
-numberOfGenerations = 2
+numberOfGenerations = 10
