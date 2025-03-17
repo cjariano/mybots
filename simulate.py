@@ -6,7 +6,9 @@ import numpy as np
 import random as rand
 import constants as c
 from simulation import SIMULATION
+import sys
 
-simulation = SIMULATION()
+directOrGUI = sys.argv[1]
+simulation = SIMULATION(directOrGUI)
 simulation.Run()
 simulation.Get_Fitness()

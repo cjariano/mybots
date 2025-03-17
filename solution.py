@@ -13,7 +13,7 @@ class SOLUTION:
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("python simulate.py")
+        os.system("python simulate.py DIRECT") # supposed to add DIRECT but it isnt working
         fitnessFile = open("fitness.txt", "r")
         self.fitness = float(fitnessFile.read())
         fitnessFile.close()
