@@ -9,3 +9,4 @@ FREQUENCY_BACKLEG = 4
 PHASEOFFSET_BACKLEG = 0
 
 numberOfGenerations = 10
+populationSize = 2
