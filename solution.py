@@ -9,11 +9,11 @@ class SOLUTION:
 
         self.weights = self.weights * 2 - 1
 
-    def Evaluate(self):
+    def Evaluate(self, directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("python simulate.py DIRECT") # supposed to add DIRECT but it isnt working
+        os.system(f"python simulate.py {directOrGUI}")
         fitnessFile = open("fitness.txt", "r")
         self.fitness = float(fitnessFile.read())
         fitnessFile.close()

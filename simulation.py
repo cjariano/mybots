@@ -11,12 +11,12 @@ class SIMULATION:
 
     def __init__(self, directOrGUI):
         if directOrGUI == "DIRECT":
-            self.physicsClient = p.connect(p.DIRECT)
+            physicsClient = p.connect(p.DIRECT)
         else:
-            self.physicsClient = p.connect(p.GUI)
+            physicsClient = p.connect(p.GUI)
 
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
-        p.setGravity(0,0,-9.8, self.physicsClient)
+        p.setGravity(0,0,-9.8, physicsClient)
         self.world = WORLD()
         self.robot = ROBOT()
 
@@ -30,7 +30,7 @@ class SIMULATION:
             self.robot.Sense(t)
             self.robot.Think()
             self.robot.Act(t)
-            time.sleep(1/60)
+            time.sleep(1/1000)
 
     def Get_Fitness(self):
         self.robot.Get_Fitness()
