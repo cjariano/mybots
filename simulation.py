@@ -9,19 +9,18 @@ import time
 
 class SIMULATION:
 
-    def __init__(self, directOrGUI, solutionID):
+    def __init__(self, directOrGUI):
         if directOrGUI == "DIRECT":
             physicsClient = p.connect(p.DIRECT)
         else:
             physicsClient = p.connect(p.GUI)
 
         self.directOrGUI = directOrGUI
-        solutionID
 
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8, physicsClient)
         self.world = WORLD()
-        self.robot = ROBOT(solutionID)
+        self.robot = ROBOT()
 
     def __del__(self):
         p.disconnect()

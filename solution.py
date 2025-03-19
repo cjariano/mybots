@@ -3,22 +3,22 @@ import pyrosim.pyrosim as pyrosim
 import os
 
 class SOLUTION:
-    
-    def __init__(self, myID):
+
+    def __init__(self):
         self.weights = np.random.rand(3,2)
 
         self.weights = self.weights * 2 - 1
 
-        self.myID = myID
+
 
     def Evaluate(self, directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("start /B python simulate.py " + directOrGUI + " " + str(self.myID))
-        fitnessFile = open("fitness"+str(self.myID)+".txt", "r")
+        os.system(f"python simulate.py {directOrGUI}")
+        fitnessFile = open("fitness.txt", "r")
         self.fitness = float(fitnessFile.read())
-        print(self.fitness)
+
         fitnessFile.close()
 
     def Create_World(self):
@@ -38,7 +38,7 @@ class SOLUTION:
         pyrosim.End()
 
     def Create_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain"+str(self.myID)+".nndf")
+        pyrosim.Start_NeuralNetwork("brain.nndf")
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "backLeg")
         pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "frontLeg")
@@ -59,6 +59,3 @@ class SOLUTION:
         randomRow = np.random.randint(0,2)
         randomColumn = np.random.randint(0,1)
         self.weights[randomRow, randomColumn] = np.random.random() * 2 - 1
-
-    def Set_ID(self, newID):
-        self.myID = newID
