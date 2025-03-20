@@ -3,13 +3,11 @@ import pyrosim.pyrosim as pyrosim
 import os
 
 class SOLUTION:
-
+    
     def __init__(self):
         self.weights = np.random.rand(3,2)
 
         self.weights = self.weights * 2 - 1
-
-
 
     def Evaluate(self, directOrGUI):
         self.Create_World()
@@ -18,7 +16,6 @@ class SOLUTION:
         os.system(f"python simulate.py {directOrGUI}")
         fitnessFile = open("fitness.txt", "r")
         self.fitness = float(fitnessFile.read())
-
         fitnessFile.close()
 
     def Create_World(self):
