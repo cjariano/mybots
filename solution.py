@@ -1,6 +1,7 @@
 import numpy as np
 import pyrosim.pyrosim as pyrosim
 import os
+import time
 
 class SOLUTION:
     
@@ -9,11 +10,14 @@ class SOLUTION:
 
         self.weights = self.weights * 2 - 1
 
-    def Evaluate(self, directOrGUI):
+    def Evaluate(self, directOrGUI: str):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system(f"python simulate.py {directOrGUI}")
+        os.system("start /B python simulate.py " + directOrGUI )
+        while not os.path.exists("fitness.txt"):
+            time.sleep(0.1)
+        
         fitnessFile = open("fitness.txt", "r")
         self.fitness = float(fitnessFile.read())
         fitnessFile.close()
