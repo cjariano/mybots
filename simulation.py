@@ -1,36 +1,44 @@
-from world import WORLD
-from robot import ROBOT
 import pybullet as p
+import time
 import pybullet_data
 import pyrosim.pyrosim as pyrosim
-import time
-
-
+import numpy
+import random
+import math
+import constants as c
+from robot import ROBOT
+from world import WORLD
+from motor import MOTOR
 
 class SIMULATION:
+    
+    def __init__(self, directOrGUI, solutionID):
 
-    def __init__(self, directOrGUI):
-        if directOrGUI == "DIRECT":
-            physicsClient = p.connect(p.DIRECT)
+        self.directOrGUI = directOrGUI
+        self.solutionID = solutionID
+        if self.directOrGUI=="DIRECT":
+            self.physicsClient = p.connect(p.DIRECT)
         else:
-            physicsClient = p.connect(p.GUI)
-
+            self.physicsClient = p.connect(p.GUI)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
-        p.setGravity(0,0,-9.8, physicsClient)
-        self.world = WORLD()
-        self.robot = ROBOT()
+        p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
+        p.setGravity(0, 0, c.GRAVITY, self.physicsClient)
 
-    def __del__(self):
-        p.disconnect()
+        self.world = WORLD()
+        self.robot = ROBOT(self.solutionID)
 
     def Run(self):
-        for t in range (1000):
-            # print(t)
+        
+        for t in range(c.ITERATIONS):
             p.stepSimulation()
             self.robot.Sense(t)
             self.robot.Think()
             self.robot.Act(t)
-            time.sleep(1/1000)
+            if self.directOrGUI=="GUI":
+                time.sleep(c.TIME_STEP)
+
+    def __del__(self):
+        p.disconnect()
 
     def Get_Fitness(self):
         self.robot.Get_Fitness()
