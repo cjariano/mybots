@@ -19,5 +19,8 @@ PHASE_OFFSET_2 = math.pi / 2 # Phase offset for the second leg movement (out of 
 
 MAX_FORCE = 50 # Maximum force applied by the motors	
 
-numberOfGenerations = 10 # Number of generations for the genetic algorithm
-populationSize = 10 # Size of the population for the genetic algorithm
+numberOfGenerations = 1 # Number of generations for the genetic algorithm
+populationSize = 1 # Size of the population for the genetic algorithm
+
+numSensorNeurons = 9
+numMotorNeurons = 8
