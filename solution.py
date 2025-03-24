@@ -101,8 +101,7 @@ class SOLUTION:
         pyrosim.Send_Sensor_Neuron(name="5", linkName="FrontLowerLeg")
         pyrosim.Send_Sensor_Neuron(name="6", linkName="BackLowerLeg")
         pyrosim.Send_Sensor_Neuron(name="7", linkName="LeftLowerLeg")
-        pyrosim.Send_Sensor_Neuron(name="8", linkName="RightLowerLeg")
-    
+        pyrosim.Send_Sensor_Neuron(name="8", linkName="RightLowerLeg")  
 
         # Motor neurons
         pyrosim.Send_Motor_Neuron(name="9", jointName="Torso_BackLeg")
@@ -123,7 +122,7 @@ class SOLUTION:
         print(f"Brain file created: {brainFileName}")
 
 
-    def Mutate(self):  # NEW:
+    def Mutate(self):
         randomRow = random.randint(0, c.numMotorNeurons)
         randomColumn = random.randint(0, 1)
         self.weights[randomRow, randomColumn] = random.random() * c.numMotorNeurons - 1
