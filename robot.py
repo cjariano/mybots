@@ -56,9 +56,10 @@ class ROBOT:
         self.nn.Update()
 
     def Get_Fitness(self):
-        stateOfLinkZero = p.getLinkState(self.robotID, 0)
-        positionOfLinkZero = stateOfLinkZero[0]
-        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotID)
+        basePosition = basePositionAndOrientation[0]
+        xCoordinateOfLinkZero = basePosition[0]
+
         # Write fitness into a temporary file then move it to a unique fitness file.
         tmpFile = "tmp" + str(self.solutionID) + ".txt"  # NEW:
         fitnessFile = "fitness" + str(self.solutionID) + ".txt"  # NEW:

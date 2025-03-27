@@ -123,6 +123,7 @@ class SOLUTION:
 
 
     def Mutate(self):
-        randomRow = random.randint(0, c.numMotorNeurons)
-        randomColumn = random.randint(0, 1)
-        self.weights[randomRow, randomColumn] = random.random() * c.numMotorNeurons - 1
+        randomRow = random.randint(0, c.numSensorNeurons - 1)
+        randomColumn = random.randint(0, c.numMotorNeurons - 1)
+        self.weights[randomRow, randomColumn] += random.uniform(-0.1, 0.1)  # Small perturbation
+        self.weights[randomRow, randomColumn] = np.clip(self.weights[randomRow, randomColumn], -1, 1)  # Keep within range

@@ -83,4 +83,15 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
                 bestKey = key
         print("Best solution is at index", bestKey, "with fitness", bestFitness)  # NEW:
         # Re-run the best solution with graphics.
+        fitnessFile = "log_quadruped_fitness.txt"
+        existing_entries = set()
+    
+        if os.path.exists(fitnessFile):
+            with open(fitnessFile, "r") as f:
+                existing_entries = set(f.readlines())
+
+        new_entry = f"{bestFitness}\n"
+        if new_entry not in existing_entries:
+            with open(fitnessFile, "a") as f:
+                f.write(new_entry)
         self.parents[bestKey].Start_Simulation("GUI")  # NEW:
