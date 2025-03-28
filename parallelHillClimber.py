@@ -71,21 +71,12 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
         for key in self.children:
             if self.children[key].fitness < self.parents[key].fitness:
                 self.parents[key] = self.children[key]  # NEW:
-    
-    def Show_Best(self):
-        # Find the parent with the lowest fitness.
-        bestKey = None
-        bestFitness = None
-        for key in self.parents:
-            fitness = self.parents[key].fitness
-            if bestFitness is None or fitness < bestFitness:
-                bestFitness = fitness
-                bestKey = key
-        print("Best solution is at index", bestKey, "with fitness", bestFitness)  # NEW:
-        # Re-run the best solution with graphics.
+
+    def Save_Best(self, bestFitness):
+        # file for quadruped
         fitnessFile = "log_quadruped_fitness.txt"
+
         existing_entries = set()
-    
         if os.path.exists(fitnessFile):
             with open(fitnessFile, "r") as f:
                 existing_entries = set(f.readlines())
@@ -94,4 +85,17 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
         if new_entry not in existing_entries:
             with open(fitnessFile, "a") as f:
                 f.write(new_entry)
-        self.parents[bestKey].Start_Simulation("GUI")  # NEW:
+    
+    def Show_Best(self):
+        # find the parent with the lowest fitness.
+        bestKey = None
+        bestFitness = None
+        for key in self.parents:
+            fitness = self.parents[key].fitness
+            if bestFitness is None or fitness < bestFitness:
+                bestFitness = fitness
+                bestKey = key
+        print("Best solution is at index", bestKey, "with fitness", bestFitness)
+        # re-run the best solution with graphics.
+        self.Save_Best(bestFitness)
+        self.parents[bestKey].Start_Simulation("GUI")
