@@ -97,5 +97,7 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
                 bestKey = key
         print("Best solution is at index", bestKey, "with fitness", bestFitness)
         # re-run the best solution with graphics.
-        self.Save_Best(bestFitness)
+
+        #UNCOMMENT WHEN MORE LEGS
+        #self.Save_Best(bestFitness)
         self.parents[bestKey].Start_Simulation("GUI")
