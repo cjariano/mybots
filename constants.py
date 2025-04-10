@@ -1,7 +1,7 @@
 import math
 
 # Simulation parameters
-ITERATIONS = 700 # Number of iterations in the simulation loop	
+ITERATIONS = 700 # Number of iterations in the simulation loop
 TIME_STEP = 1/60 # Simulation time step (to maintain real-time sync)	
 
 # Physics parameters
