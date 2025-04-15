@@ -74,7 +74,7 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
 
     def Save_Best(self, bestFitness):
         # file for quadruped
-        fitnessFile = "log_hexapod1_fitness.txt"
+        fitnessFile = "log_hexapod2_fitness.txt"
 
         existing_entries = set()
         if os.path.exists(fitnessFile):
@@ -98,6 +98,6 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
         print("Best solution is at index", bestKey, "with fitness", bestFitness)
         # re-run the best solution with graphics.
 
-        #UNCOMMENT WHEN MORE LEGS
+        #UNCOMMENT WHEN CHANGED LEGS
         self.Save_Best(bestFitness)
         self.parents[bestKey].Start_Simulation("GUI")
