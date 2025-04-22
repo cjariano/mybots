@@ -1,8 +1,9 @@
-# parallelHillClimber.py
-import os  # NEW: For file management
-from solution import SOLUTION  # NEW:
-from constants import populationSize, numberOfGenerations  # NEW:
-import copy  # NEW:
+import os
+from solution import SOLUTION
+from constants import populationSize, numberOfGenerations, numberOfGenerations# parallelHillClimber.py
+import copy
+import matplotlib as plt
+
 
 class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
     def __init__(self):
@@ -96,8 +97,9 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
                 bestFitness = fitness
                 bestKey = key
         print("Best solution is at index", bestKey, "with fitness", bestFitness)
-        # re-run the best solution with graphics.
 
-        #UNCOMMENT WHEN CHANGED LEGS
-        self.Save_Best(bestFitness)
+        # implement Save_Best
+        #self.Save_Best(bestFitness)
+
+        # re-run the best solution with graphics.
         self.parents[bestKey].Start_Simulation("GUI")
