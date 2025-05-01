@@ -22,7 +22,7 @@ MAX_FORCE = 50 # Maximum force applied by the motors
 numberOfGenerations = 10 # Number of generations for the genetic algorithm CHANGE BACK TO 10
 populationSize = 10 # Size of the population for the genetic algorithm CHANGE BACK TO 10
 
-numSensorNeurons = 13
-numMotorNeurons = 12
+numSensorNeurons = 9
+numMotorNeurons = 8
 
 motorJointRange = 0.2

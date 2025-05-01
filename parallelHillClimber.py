@@ -75,7 +75,7 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
 
     def Save_Best(self, bestFitness):
         # file for quadruped
-        fitnessFile = "log_hexapod2_fitness.txt"
+        fitnessFile = "log_quadruped_heavier_fitness.txt"
 
         existing_entries = set()
         if os.path.exists(fitnessFile):
