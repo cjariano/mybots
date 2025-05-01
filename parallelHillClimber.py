@@ -22,7 +22,7 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
         # First, evaluate all parents in parallel using GUI mode.
         self.Evaluate(self.parents, "DIRECT")  # NEW:
         # Now evolve for a number of generations.
-        for gen in range(numberOfGenerations):  # NEW:
+        for _ in range(numberOfGenerations):  # NEW:
             self.Spawn()           # NEW:
             self.Mutate()          # NEW:
             self.Evaluate(self.children, "DIRECT")  # NEW: Evaluate children in DIRECT mode (fast)
@@ -75,7 +75,7 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
 
     def Save_Best(self, bestFitness):
         # file for quadruped
-        fitnessFile = "log_quadruped_heavier_fitness.txt"
+        fitnessFile = "log_quadruped_fitness.txt"
 
         existing_entries = set()
         if os.path.exists(fitnessFile):

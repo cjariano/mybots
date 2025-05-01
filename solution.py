@@ -124,8 +124,22 @@ class SOLUTION:
         print(f"Brain file created: {brainFileName}")
 
 
+    # def Mutate(self):
+    #     randomRow = random.randint(0, c.numSensorNeurons - 1)
+    #     randomColumn = random.randint(0, c.numMotorNeurons - 1)
+    #     self.weights[randomRow, randomColumn] += random.uniform(-0.1, 0.1)  # Small perturbation
+    #     self.weights[randomRow, randomColumn] = np.clip(self.weights[randomRow, randomColumn], -1, 1)  # Keep within range
+
+    # def Mutate(self):
+    #     num_mutations = random.randint(1, 5)  # Random number of mutations
+    #     for _ in range(num_mutations):
+    #         r = random.randint(0, c.numSensorNeurons - 1)
+    #         c_ = random.randint(0, c.numMotorNeurons - 1)
+    #         self.weights[r, c_] += random.uniform(-0.5, 0.5)  # Larger mutation
+    #         self.weights[r, c_] = np.clip(self.weights[r, c_], -1, 1)
+
     def Mutate(self):
-        randomRow = random.randint(0, c.numSensorNeurons - 1)
-        randomColumn = random.randint(0, c.numMotorNeurons - 1)
-        self.weights[randomRow, randomColumn] += random.uniform(-0.1, 0.1)  # Small perturbation
-        self.weights[randomRow, randomColumn] = np.clip(self.weights[randomRow, randomColumn], -1, 1)  # Keep within range
+        mutation_strength = 0.2  # Standard deviation
+        self.weights += np.random.normal(0, mutation_strength, self.weights.shape)
+        self.weights = np.clip(self.weights, -1, 1)
+
