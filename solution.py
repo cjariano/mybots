@@ -77,7 +77,7 @@ class SOLUTION:
         pyrosim.Send_Cube(name="RightLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
 
         #CubeforWeight
-        pyrosim.Send_Cube(name="Extra", pos=[0, 0, 1.5], size=[1, 0.4, 0.2])
+        pyrosim.Send_Cube(name="Extra", pos=[0, 0, 1.5], size=[1, 0.4, 0.4])
 
         # Joints
         pyrosim.Send_Joint(name="Torso_BackLeg", parent="Torso", child="BackLeg", type="revolute", position=[0, -0.5, 1], jointAxis = "1 0 0")
@@ -88,7 +88,7 @@ class SOLUTION:
         pyrosim.Send_Joint(name="BackLeg_BackLowerLeg", parent="BackLeg", child="BackLowerLeg", type="revolute", position=[0, -1, 0], jointAxis ="1 0 0")
         pyrosim.Send_Joint(name="LeftLeg_LeftLowerLeg", parent="LeftLeg", child="LeftLowerLeg", type="revolute", position=[-1, 0, 0], jointAxis ="0 1 0")
         pyrosim.Send_Joint(name="RightLeg_RightLowerLeg", parent="RightLeg", child="RightLowerLeg", type="revolute", position=[1, 0, 0], jointAxis ="0 1 0")
-        pyrosim.Send_Joint(name="Torso_Extra", parent="Torso", child="Extra", type = "fixed", position=[0, 0, 0.1], jointAxis="0 0 1")
+        pyrosim.Send_Joint(name="Torso_Extra", parent="Torso", child="Extra", type = "fixed", position=[0, 0, 0.2], jointAxis="0 0 1")
 
         pyrosim.End()
 

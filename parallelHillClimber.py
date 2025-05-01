@@ -99,7 +99,7 @@ class PARALLEL_HILL_CLIMBER:  # NEW: Renamed class
         print("Best solution is at index", bestKey, "with fitness", bestFitness)
 
         # implement Save_Best
-        #self.Save_Best(bestFitness)
+        self.Save_Best(bestFitness)
 
         # re-run the best solution with graphics.
         self.parents[bestKey].Start_Simulation("GUI")
