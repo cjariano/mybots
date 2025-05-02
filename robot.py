@@ -26,7 +26,7 @@ class ROBOT:
         self.nn = NEURAL_NETWORK(brainFile)
         # Delete the brain file after it is read
         os.system("del " + brainFile)  # NEW:
-        print(f"Brain file deleted: {brainFile}")
+        #print(f"Brain file deleted: {brainFile}")
 
         self.Prepare_To_Sense()
         self.Prepare_To_Act()

@@ -121,7 +121,7 @@ class SOLUTION:
                 weight = self.weights[currentRow][currentColumn]
                 pyrosim.Send_Synapse(sourceNeuronName=str(currentRow), targetNeuronName=str(currentColumn + c.numSensorNeurons), weight=weight)
         pyrosim.End()
-        print(f"Brain file created: {brainFileName}")
+        #print(f"Brain file created: {brainFileName}")
 
 
     # def Mutate(self):
