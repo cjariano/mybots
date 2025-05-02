@@ -11,27 +11,22 @@ with open("log_quadruped_fitness.txt", 'r') as file:
 
 quadruped_avg = sum(quadruped_vals)/len(quadruped_vals)
 
-with open("log_hexapod1_fitness.txt", 'r') as file:
+with open("log_hexapod_fitness.txt", 'r') as file:
     lines = file.readlines()
-    hexapod1_vals = [float(line.strip()) for line in lines if line.strip()]
+    hexapod_vals = [float(line.strip()) for line in lines if line.strip()]
 
 
-hexapod1_avg = sum(hexapod1_vals)/len(hexapod1_vals)
-
-with open("log_hexapod2_fitness.txt", 'r') as file:
-    lines = file.readlines()
-    hexapod2_vals = [float(line.strip()) for line in lines if line.strip()]
+hexapod_avg = sum(hexapod_vals)/len(hexapod_vals)
 
 
-hexapod2_avg = sum(hexapod2_vals)/len(hexapod2_vals)
 
-print(f"quadruped average: {quadruped_avg}\nhexapod 1 average: {hexapod1_avg}\nhexapod 2 average: {hexapod2_avg}")
-print(f"quadruped max: {min(quadruped_vals)}\nhexapod 1 max: {min(hexapod1_vals)}\nhexapod 2 max: {min(hexapod2_vals)}")
+print(f"quadruped average: {quadruped_avg}\nhexapod average: {hexapod_avg}")
+print(f"quadruped max: {min(quadruped_vals)}\nhexapod max: {min(hexapod_vals)}")
 
 
 plt.plot(np.abs(quadruped_vals), label = 'Quadruped')
-plt.plot(np.abs(hexapod1_vals), label = 'Hexapod 1')
-plt.plot(np.abs(hexapod2_vals), label = 'Hexapod 2')
+plt.plot(np.abs(hexapod_vals), label = 'Hexapod')
+
 
 plt.xlabel('Robot')
 plt.ylabel('Fitness in -x direction')
@@ -40,8 +35,7 @@ plt.xticks(range(20), labels = range(1,21))
 plt.legend()
 
 results = pd.DataFrame({'Quadruped': quadruped_vals,
-                        'Hexapod 1': hexapod1_vals,
-                        'Hexapod 2': hexapod2_vals})
+                        'Hexapod': hexapod_vals})
 
 print(results)
 

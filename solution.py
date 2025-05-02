@@ -142,11 +142,16 @@ class SOLUTION:
                 weight = self.weights[currentRow][currentColumn]
                 pyrosim.Send_Synapse(sourceNeuronName=str(currentRow), targetNeuronName=str(currentColumn + c.numSensorNeurons), weight=weight)
         pyrosim.End()
-        print(f"Brain file created: {brainFileName}")
+        #print(f"Brain file created: {brainFileName}")
 
 
+    # def Mutate(self):
+    #     randomRow = random.randint(0, c.numSensorNeurons - 1)
+    #     randomColumn = random.randint(0, c.numMotorNeurons - 1)
+    #     self.weights[randomRow, randomColumn] += random.uniform(-0.1, 0.1)  # Small perturbation
+    #     self.weights[randomRow, randomColumn] = np.clip(self.weights[randomRow, randomColumn], -1, 1)  # Keep within range
+    
     def Mutate(self):
-        randomRow = random.randint(0, c.numSensorNeurons - 1)
-        randomColumn = random.randint(0, c.numMotorNeurons - 1)
-        self.weights[randomRow, randomColumn] += random.uniform(-0.1, 0.1)  # Small perturbation
-        self.weights[randomRow, randomColumn] = np.clip(self.weights[randomRow, randomColumn], -1, 1)  # Keep within range
+        mutation_strength = 0.2  # Standard deviation
+        self.weights += np.random.normal(0, mutation_strength, self.weights.shape)
+        self.weights = np.clip(self.weights, -1, 1)
